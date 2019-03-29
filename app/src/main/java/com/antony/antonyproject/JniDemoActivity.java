@@ -7,6 +7,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+/**
+ * 初学JNI的小Demo
+ */
 public class JniDemoActivity extends AppCompatActivity implements View.OnClickListener {
 
 
