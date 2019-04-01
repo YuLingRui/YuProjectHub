@@ -1,26 +1,34 @@
 package base;
 
-public class BasePresenter <V extends BaseContract.View> implements BaseContract.Presenter<V> {
+public class BasePresenter<V extends BaseView> {
 
-    private V view;
+    private V mView;
 
-    public BasePresenter(){}
-
-    @Override
-    public void attachView(V view) {
-
+    public BasePresenter() {
     }
 
-    @Override
-    public void detachView() {
+    /**
+     * 绑定view，一般在初始化中调用该方法
+     *
+     * @param view view
+     */
+    public void attachView(V view) {
+        this.mView = view;
+    }
 
+    /**
+     * 解除绑定view，一般在onDestroy中调用
+     */
+
+    public void detachView() {
+        this.mView = null;
     }
 
     public boolean isViewAttached() {
-        return view != null;
+        return mView != null;
     }
 
     public V getView() {
-        return view;
+        return mView;
     }
 }
