@@ -3,13 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/ic_nav_header_bg">
+    android:background="@mipmap/navigation_header">
 
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/nav_circle_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
         android:src="@mipmap/ic_launcher"
         app:civ_border_color="@android:color/holo_red_dark"
         app:civ_border_width="2dp"
@@ -22,21 +23,30 @@
         android:layout_height="wrap_content"
         android:text="安东尼的夏天"
         android:textColor="@color/white_text"
-        android:textSize="24sp" />
+        android:textSize="24sp"
+        app:layout_constraintTop_toBottomOf="@+id/nav_circle_image" />
 
     <TextView
         android:id="@+id/nav_tv_level"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
         android:text="Lv.8"
         android:textColor="@color/white_text"
-        android:textSize="16sp" />
+        android:textSize="24sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/nav_tv_name"
+        app:layout_constraintLeft_toRightOf="@+id/nav_tv_name" />
 
     <TextView
         android:id="@+id/nav_tv_sign_in"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginRight="12dp"
         android:text="签到"
         android:textColor="@color/white_text"
-        android:textSize="20sp" />
+        android:textSize="24sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/nav_tv_name"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>
