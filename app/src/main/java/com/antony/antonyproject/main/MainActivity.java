@@ -7,15 +7,18 @@ import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.ListFragment;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.antony.antonyproject.R;
 import com.antony.antonyproject.fragment.one.OneFragment;
+import com.antony.antonyproject.utils.TabViewPagerUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +28,7 @@ import base.BaseMvpActivity;
 import base.BaseMvpFragment;
 import butterknife.BindView;
 
-public class MainActivity extends BaseMvpActivity<MainPresenter> implements MainContract.View {
+public class MainActivity extends BaseMvpActivity<MainPresenter> implements MainContract.View, NavigationView.OnNavigationItemSelectedListener {
 
 
     /**
@@ -34,13 +37,13 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
      * 而对于Fragment比较多的情况，需要切换的时候销毁以前的Fragment以释放内存，就可以使用FragmentStatePagerAdapter。
      */
     @BindView(R.id.main_drawer_layout)
-    private DrawerLayout mDrawerLayout;
+    public DrawerLayout mDrawerLayout;
     @BindView(R.id.main_tablayout)
-    private TabLayout mTabLayout;
+    public TabLayout mTabLayout;
     @BindView(R.id.main_viewpager)
-    private ViewPager mViewPager;
+    public ViewPager mViewPager;
     @BindView(R.id.main_navigation_view)
-    private NavigationView mNavigationView;
+    public NavigationView mNavigationView;
 
     //TabLayout的tab
     private int[] tabItems = new int[]{R.drawable.main_music_selector,
@@ -59,22 +62,10 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
 
     @Override
     public void initView() {
-        List<BaseMvpFragment> fragmentList = new ArrayList<>();
-        fragmentList.add(new OneFragment());
-        fragmentList.add(new OneFragment());
-        fragmentList.add(new OneFragment());
-        BaseFragmentPagerAdapter pagerAdapter = new BaseFragmentPagerAdapter(getSupportFragmentManager(), fragmentList);
-        mViewPager.setAdapter(pagerAdapter);
-        mViewPager.setOffscreenPageLimit(2);
-        mTabLayout.setupWithViewPager(mViewPager);
-        //设置tabItem
-        for (int i=0;i<fragmentList.size();i++){
-            TabLayout.Tab tab = mTabLayout.getTabAt(i);
-            tab.setCustomView(R.layout.main_tab_item_layout);
-            ImageView tabIcon = (ImageView) tab.getCustomView().findViewById(R.id.iv_tab_icon);
-            tabIcon.setImageResource(tabItems[i]);
-        }
-        mViewPager.setCurrentItem(1);
+        List<Fragment> fragments = TabViewPagerUtil.addFragment(new OneFragment(), new OneFragment());
+        List<String> strings = TabViewPagerUtil.addTitle("推荐", "朋友", "电台");
+        TabViewPagerUtil.addTab(mTabLayout,mViewPager, fragments, strings, getSupportFragmentManager());
+        mNavigationView.setNavigationItemSelectedListener(this);
     }
 
     @Override
@@ -90,5 +81,10 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
     @Override
     public void onError(Throwable throwable) {
 
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+        return false;
     }
 }
