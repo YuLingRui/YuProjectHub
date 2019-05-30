@@ -9,6 +9,6 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:scaleType="center"
-        android:src="@drawable/main_discover_selector" />
+        android:src="@drawable/titlebar_music" />
 
 </RelativeLayout>

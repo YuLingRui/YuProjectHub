@@ -12,28 +12,20 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <android.support.design.widget.TabLayout
-            android:id="@+id/main_tablayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/red"
-            app:tabIndicatorHeight="0dp"
-            app:tabMode="fixed" />
+        <include layout="@layout/main_toolbar_layout_two" />
 
         <android.support.v4.view.ViewPager
             android:id="@+id/main_viewpager"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white" />
-
+            android:background="@color/black" />
     </LinearLayout>
-
 
     <android.support.design.widget.NavigationView
         android:id="@+id/main_navigation_view"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        app:headerLayout="@layout/layout_navigation_header"/>
+        app:headerLayout="@layout/layout_navigation_header" />
 
 </android.support.v4.widget.DrawerLayout>
