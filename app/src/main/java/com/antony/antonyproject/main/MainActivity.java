@@ -52,9 +52,6 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
         mViewPager = findViewById(R.id.main_viewpager);
         mNavigationView = findViewById(R.id.main_navigation_view);
         mToolbar = findViewById(R.id.main_toolbar);
-        imgMusic = findViewById(R.id.toolbar_disco);
-        imgDisco = findViewById(R.id.toolbar_music);
-        imgFriends = findViewById(R.id.toolbar_friends);
         /*drawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, mToolbar, R.string.toolbar_null_name, R.string.toolbar_null_name);
         通过下面这句实现toolbar和Drawer的联动：如果没有这行代码，箭头是不会随着侧滑菜单的开关而变换的（或者没有箭头），
          可以尝试一下，不影响正常侧滑
@@ -68,9 +65,6 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         mDrawerLayout.setDrawerListener(this);
         mNavigationView.setNavigationItemSelectedListener(this);
-        imgMusic.setOnClickListener(this);
-        imgDisco.setOnClickListener(this);
-        imgFriends.setOnClickListener(this);
     }
 
     @Override
@@ -127,12 +121,6 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
         switch (v.getId()) {
             case R.id.toolbar_title_menu:
                 mDrawerLayout.openDrawer(GravityCompat.START);
-                break;
-            case R.id.toolbar_music:
-                break;
-            case R.id.toolbar_disco:
-                break;
-            case R.id.toolbar_friends:
                 break;
             default:
                 // do nothing

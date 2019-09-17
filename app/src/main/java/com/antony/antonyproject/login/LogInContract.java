@@ -7,12 +7,6 @@ import io.reactivex.Flowable;
 
 public interface LogInContract {
 
-    /*******MVP********/
-
-    interface Model {
-        Flowable<BaseObjectBean<LoginBean>> login(String username, String password);
-    }
-
     interface View extends BaseView {
 
         @Override

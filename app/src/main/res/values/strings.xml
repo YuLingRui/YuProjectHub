@@ -5,6 +5,11 @@
     <string name="sub">相减</string>
     <string name="mul">相乘</string>
     <string name="div">相除</string>
+    <string name="sign_in_txt">签到</string>
+    <string name="my_self_txt">我的</string>
+    <string name="found_txt">发现</string>
+    <string name="cloud_txt">云村</string>
+    <string name="video_txt">视频</string>
 
 
 </resources>
